@@ -41,7 +41,31 @@ namespace DIO.Bank
 
         }
 
+        public void Depositar(double valorDeposito)
+        {
 
+            this.saldo += valorDeposito;
+
+            Console.WriteLine($"Saldo atual da conta de {this.nome} é {this.saldo}");
+
+        }
+
+        public void Transferir(double valorTransferencia, Conta contaDestino)
+        {
+            if (this.Sacar(valorTransferencia))
+            {
+                contaDestino.Depositar(valorTransferencia);
+                
+            }
+
+        }
+
+
+        public override string ToString(){
+            
+            return $"TipoConta: {this.tipoConta} | Nome: {this.nome} | Saldo: {this.saldo} | Crédito: {this.credito}";
+
+        }
 
     }
 }
